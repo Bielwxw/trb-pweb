@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,14 +17,14 @@
 
         h1 {
             color: blue;
-        }       
+        }
 
-        #minhaLista {   
+        #minhaLista {
             list-style-type: none;
             padding: 0;
             margin: 0;
             text-align: left;
-            margin-top: 30px; 
+            margin-top: 30px;
         }
 
         #minhaLista li {
@@ -53,87 +54,97 @@
 
         #desen {
             text-align: center;
-            position: fixed; 
-            top: 30%; 
-            left: 50%; 
-            transform: translateX(-50%); /* Ajustar o alinhamento ao centro */
-            background-color: white; 
-            padding: 10px; 
-            z-index: 1; /* Garantir que o formulário fique sobreposto ao restante do conteúdo */
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            /* Ajustar o alinhamento ao centro */
+            background-color: white;
+            padding: 10px;
+            z-index: 1;
+            /* Garantir que o formulário fique sobreposto ao restante do conteúdo */
         }
     </style>
 </head>
+
 <body>
 
-<h1 id="titulo">Manipulação do Dom</h1>
-<p id="demo">Bem-vindo ao coding Dojo!</p>
-<button id="changeText">Alterar o texto</button>
+    <h1 id="titulo">Manipulação do Dom</h1>
+    <p id="demo">Bem-vindo ao coding Dojo!</p>
+    <button id="changeText">Alterar o texto</button>
 
-<ul id="minhaLista"></ul>
+    <ul id="minhaLista"></ul>
 
-<section id="desen">
-    <input type="text" id="inputItem" placeholder="Digite sua tarefa">
-    <input type="date" id="inputData">
-    <button id="adicionarItem">Adicionar</button>
-    <button id="removerItem">Remover</button>
-</section>
+    <section id="desen">
+        <input type="text" id="inputItem" placeholder="Digite sua tarefa">
+        <input type="date" id="inputData">
+        <button id="adicionarItem">Adicionar</button>
+        <button id="removerItem">Remover</button>
+    </section>
+    <select>
+        
+    </select>
+    <script>
 
-<script>
+        //primeira questão ;
 
-    //primeira questão ;
-
-    function alterarTexto() {
-        let paragrafo = document.getElementById("demo");
-        paragrafo.innerHTML = "Aproveite o nosso site";
-    }
-
-    let botao = document.getElementById("changeText");
-    botao.addEventListener("click", alterarTexto);
-
-    // segunda questão ;
-
-    const titulo = document.getElementById('titulo');
-
-    titulo.addEventListener('mouseover', () => {
-        titulo.style.color = "purple";
-    });
-
-    titulo.addEventListener("mouseout", () => {
-        titulo.style.color = "blue";
-    });
-
-    // terceira questão implementada junto com a quarta ; 
-
-    function adicionarItem() {
-        let novoItem = document.getElementById("inputItem").value;
-        let novaData = document.getElementById("inputData").value;
-
-        let lista = document.getElementById("minhaLista");
-        let novoElemento = document.createElement("li");
-
-        novoElemento.appendChild(document.createTextNode(`Tarefa: ${novoItem}, Data: ${novaData}`));
-
-        // Adiciona o novo item no topo da lista
-        lista.insertBefore(novoElemento, lista.firstChild); 
-
-        document.getElementById("inputItem").value = "";
-        document.getElementById("inputData").value = "";
-    }
-
-    // função para remover ; 
-
-    function removerItem() {
-        let lista = document.getElementById("minhaLista");
-        if (lista.childNodes.length > 0) {
-            lista.removeChild(lista.firstChild);
+        function alterarTexto() {
+            let paragrafo = document.getElementById("demo");
+            paragrafo.innerHTML = "Aproveite o nosso site";
         }
-    }
 
-    let botaoAdicionar = document.getElementById("adicionarItem");
-    let botaoRemover = document.getElementById("removerItem");
+        let botao = document.getElementById("changeText");
+        botao.addEventListener("click", alterarTexto);
 
-    botaoAdicionar.addEventListener("click", adicionarItem);
-    botaoRemover.addEventListener("click", removerItem);
-</script>
+        // segunda questão ;
+
+        const titulo = document.getElementById('titulo');
+
+        titulo.addEventListener('mouseover', () => {
+            titulo.style.color = "purple";
+        });
+
+        titulo.addEventListener("mouseout", () => {
+            titulo.style.color = "blue";
+        });
+
+        // terceira questão implementada junto com a quarta ; 
+
+        function adicionarItem() {
+            let novoItem = document.getElementById("inputItem").value;
+            let novaData = document.getElementById("inputData").value;
+
+            let lista = document.getElementById("minhaLista");
+            let novoElemento = document.createElement("li");
+
+            novoElemento.appendChild(document.createTextNode(`Tarefa: ${novoItem}, Data: ${novaData}`));
+
+            // Adiciona o novo item no topo da lista
+            lista.insertBefore(novoElemento, lista.firstChild);
+
+            document.getElementById("inputItem").value = "";
+            document.getElementById("inputData").value = "";
+        }
+
+        // função para remover ; 
+
+        function removerItem() {
+            let lista = document.getElementById("minhaLista");
+            if (lista.childNodes.length > 0) {
+                lista.removeChild(lista.lastChild);
+            }
+        }
+
+
+        let botaoAdicionar = document.getElementById("adicionarItem");
+        let botaoRemover = document.getElementById("removerItem");
+
+        botaoAdicionar.addEventListener("click", adicionarItem);
+        botaoRemover.addEventListener("click", removerItem);
+
+        // 5a. Q.
+
+    </script>
 </body>
+
 </html>
