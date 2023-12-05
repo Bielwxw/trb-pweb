@@ -117,6 +117,15 @@
                 inputItem.value = "";
                 inputData.value = "";
 
+                checkbox.addEventListener("change", function () {
+                    if (this.checked) {
+                        lista.appendChild(this.parentNode);
+                        this.parentNode.style.textDecoration = "line-through";
+                    } else {
+                        lista.insertBefore(this.parentNode, lista.firstChild);
+                        this.parentNode.style.textDecoration = "none";
+                    }
+                });
             }
         });
 
@@ -125,7 +134,19 @@
                 lista.removeChild(lista.lastChild);
             }
         });
+
+        botaoRemover.addEventListener("click", () => {
+        const tarefasMarcadas = lista.querySelectorAll("input[type='checkbox']:checked");
+
+        tarefasMarcadas.forEach((tarefa) => {
+            lista.removeChild(tarefa.parentNode);
+        });
+    });
+
+
     </script>
 </body>
 
 </html>
+
+
